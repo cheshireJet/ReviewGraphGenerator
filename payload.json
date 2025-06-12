@@ -1,0 +1,11 @@
+{
+  "values": [
+    { "label": "מטרות", "student": 0, "master": 1 },
+    { "label": "חקר", "student": 2, "master": 2 },
+    { "label": "תוכנית עסקית", "student": 2, "master": 1 },
+    { "label": "ביצוע", "student": 3, "master": 3 },
+    { "label": "הצגה", "student": 1, "master": 3 },
+    { "label": "תיעוד והגשה", "student": 2, "master": 2 },
+    { "label": "תערוכה" , "student": 0, "master": 1 }
+  ]
+}

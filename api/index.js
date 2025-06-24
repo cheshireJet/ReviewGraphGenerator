@@ -24,6 +24,7 @@ function random(min, max) {
 
 // המרה של ציונים (0, 1, 2, 3) לגודל יחסי על הגרף
 const scores = [0.2, 0.4, 0.6, 0.9]; // 0=לא בוצע, 3=בוצע מעולה
+const scoreLabels = [0.23, 0.43, 0.63, 0.86]; // 0=לא בוצע, 3=בוצע מעולה
 function getScore(value) {
     // אם הערך לא תקין, החזר את הערך הנמוך ביותר
     return (value >= 0 && value < scores.length) ? scores[value] : scores[0];
@@ -126,8 +127,8 @@ function drawGraph(ctx, values) {
     ctx.fillStyle = 'black';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    scores.forEach((s, i) => {
-        const innerRadius = radius * (s + 0.03); // הוספת ריווח קל בין הקשת לטקסט
+    scoreLabels.forEach((s, i) => {
+        const innerRadius = radius * s; 
         // מיקום הטקסט ברבעון השמאלי עליון של התרשים
         const midAngle = (315 * Math.PI) / 180;
 

@@ -128,10 +128,8 @@ function drawGraph(ctx, values) {
     ctx.textBaseline = 'middle';
     scores.forEach((s, i) => {
         const innerRadius = radius * s;
-        // בחר זוית התחלה וסיום (למשל, 210 עד -30 מעלות)
-        const startAngle = (210 * Math.PI) / 180;
-        const endAngle = (-30 * Math.PI) / 180;
-        const midAngle = (startAngle + endAngle) / 2;
+        // מיקום הטקסט ברבעון השמאלי עליון של התרשים
+        const midAngle = (315 * Math.PI) / 180;
 
         // מיקום הטקסט במרכז הקשת
         const x = Math.cos(midAngle) * innerRadius;

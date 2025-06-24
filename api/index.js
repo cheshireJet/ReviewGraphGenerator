@@ -33,7 +33,7 @@ function getScore(value) {
 function drawStudentShape(ctx, points) {
     ctx.save(); // מקביל ל-push()
     ctx.fillStyle = 'rgba(0, 0, 0, 0.23)'; // fill(0, 60) -> alpha = 60/255
-    ctx.strokeStyle = 'rgba(40, 40, 40, 1)'; // stroke(40)
+    ctx.strokeStyle = 'rgba(20, 20, 20, 1)'; // stroke(40)
     ctx.lineWidth = 4;
     ctx.setLineDash([5, 10]); // קו מקווקו
     
@@ -118,7 +118,34 @@ function drawGraph(ctx, values) {
         ctx.arc(0, 0, innerRadius, 0, 2 * Math.PI);
         ctx.stroke();
     });
+
+    // --- הוספת תוויות קשתיות לציונים ---
+    const gradeLabels = ['לא בוצע', 'בוצע חלקית', 'בוצע', 'בוצע מעולה'];
+    ctx.save();
+    ctx.font = '18px Assistant';
+    ctx.fillStyle = 'black';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    scores.forEach((s, i) => {
+        const innerRadius = radius * s;
+        // בחר זוית התחלה וסיום (למשל, 210 עד -30 מעלות)
+        const startAngle = (210 * Math.PI) / 180;
+        const endAngle = (-30 * Math.PI) / 180;
+        const midAngle = (startAngle + endAngle) / 2;
+
+        // מיקום הטקסט במרכז הקשת
+        const x = Math.cos(midAngle) * innerRadius;
+        const y = Math.sin(midAngle) * innerRadius;
+
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(midAngle + Math.PI / 2); // סיבוב הטקסט לאורך הקשת
+        ctx.fillText(gradeLabels[i], 0, 0);
+        ctx.restore();
+    });
+    ctx.restore();
     
+
     // ציור הקווים מהמרכז וטקסט התוויות
     values.forEach((v, i) => {
         const pos = basePoints[i];

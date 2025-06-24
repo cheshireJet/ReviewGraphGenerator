@@ -127,7 +127,7 @@ function drawGraph(ctx, values) {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     scores.forEach((s, i) => {
-        const innerRadius = radius * s;
+        const innerRadius = radius * (s + 0.03); // הוספת ריווח קל בין הקשת לטקסט
         // מיקום הטקסט ברבעון השמאלי עליון של התרשים
         const midAngle = (315 * Math.PI) / 180;
 
